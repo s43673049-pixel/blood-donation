@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Blood Request</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+   
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Create Blood Request</h2>
+
+    <form action="submit_request.php" method="POST">
+
+        <div class="form-group">
+            <label>Patient Name</label>
+            <input type="text" name="patient_name" required>
+        </div>
+
+        <div class="form-group">
+            <label>Blood Group Needed</label>
+            <select name="blood_group" required>
+                <option value="">Select Blood Group</option>
+                <option>A+</option>
+                <option>A-</option>
+                <option>B+</option>
+                <option>B-</option>
+                <option>O+</option>
+                <option>O-</option>
+                <option>AB+</option>
+                <option>AB-</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Units Required</label>
+            <input type="number" name="units" min="1" required>
+        </div>
+
+        <div class="form-group">
+            <label>Hospital Name</label>
+            <input type="text" name="hospital" required>
+        </div>
+
+        <div class="form-group">
+            <label>City</label>
+            <input type="text" name="city" required>
+        </div>
+
+        <div class="form-group">
+            <label>Contact Number</label>
+            <input type="tel" name="contact" pattern="[0-9]{10}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Urgency Level</label>
+            <select name="urgency" required>
+                <option value="">Select Urgency</option>
+                <option>Normal</option>
+                <option>Urgent</option>
+                <option>Emergency</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Additional Notes</label>
+            <textarea name="notes"></textarea>
+        </div>
+
+        <button type="submit">Submit Request</button>
+
+    </form>
+
+    <div class="back-link">
+        <a href="dashboard.html">← Back to Dashboard</a>
+    </div>
+</div>
+
+</body>
+</html>
