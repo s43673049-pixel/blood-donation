@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "web-app-1a136",
+    "staging": "web-app-1a136"
+  },
+  "targets": {},
+  "etags": {}
+}
