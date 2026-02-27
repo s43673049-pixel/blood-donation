@@ -1,0 +1,162 @@
+/* Registration & general form styles */
+:root{
+	--accent:#b71c1c; /* blood-red */
+	--accent-dark:#8e1515;
+	--muted:#6b6b6b;
+	--bg:#ffffff;
+	--surface:#fafafa;
+	--radius:8px;
+	--gap:16px;
+	--input-height:44px;
+}
+
+.form-container{
+	max-width:720px;
+	margin:24px auto;
+	background:var(--surface);
+	border-radius:var(--radius);
+	box-shadow:0 6px 18px rgba(0,0,0,0.06);
+	padding:28px;
+	font-family:inherit;
+}
+
+.form-title{
+	margin:0 0 12px 0;
+	font-size:1.25rem;
+	color:var(--accent-dark);
+}
+
+form.registration-form{
+	display:flex;
+	flex-direction:column;
+	gap:var(--gap);
+}
+
+.form-row{
+	display:flex;
+	gap:12px;
+	align-items:flex-start;
+}
+
+.form-row.column{
+	flex-direction:column;
+}
+
+label.field-label{
+	display:block;
+	font-weight:600;
+	color:var(--muted);
+	margin-bottom:6px;
+	font-size:0.95rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+select,
+textarea{
+	width:100%;
+	height:var(--input-height);
+	padding:10px 12px;
+	border:1px solid #e0e0e0;
+	background:var(--bg);
+	border-radius:6px;
+	font-size:0.95rem;
+	color:#111;
+	transition:box-shadow .12s ease, border-color .12s ease;
+	box-sizing:border-box;
+}
+
+textarea{ height:auto; min-height:110px; padding-top:10px; padding-bottom:10px; }
+
+input::placeholder, textarea::placeholder{
+	color:#bdbdbd;
+}
+
+input:focus, textarea:focus, select:focus{
+	outline:none;
+	border-color:var(--accent);
+	box-shadow:0 0 0 4px rgba(183,28,28,0.06);
+}
+
+.half{ flex:1; }
+.two-thirds{ flex:2; }
+
+.checkbox-row{ display:flex; gap:8px; align-items:center; }
+
+.help-text{
+	font-size:0.85rem;
+	color:var(--muted);
+}
+
+.error-text{
+	font-size:0.85rem;
+	color:#d32f2f;
+	margin-top:6px;
+}
+
+.input-error{
+	border-color:#d32f2f !important;
+	box-shadow:0 0 0 4px rgba(211,47,47,0.06) !important;
+}
+
+.form-actions{
+	display:flex;
+	gap:12px;
+	justify-content:flex-end;
+	align-items:center;
+	margin-top:6px;
+}
+
+.btn{
+	display:inline-flex;
+	align-items:center;
+	justify-content:center;
+	gap:8px;
+	padding:10px 16px;
+	border-radius:6px;
+	font-weight:600;
+	cursor:pointer;
+	border:1px solid transparent;
+	font-size:0.95rem;
+}
+
+.btn-primary{
+	background:var(--accent);
+	color:#fff;
+	border-color:var(--accent-dark);
+}
+.btn-primary:active{ background:var(--accent-dark); }
+
+.btn-secondary{
+	background:transparent;
+	color:var(--muted);
+	border-color:#e0e0e0;
+}
+
+.btn[disabled],
+.btn.disabled{
+	opacity:0.6; cursor:not-allowed;
+}
+
+.field-row-inline{ display:flex; gap:12px; width:100%; }
+
+/* small screens */
+@media (max-width:720px){
+	.form-container{ padding:18px; margin:16px; }
+	.form-row{ flex-direction:column; }
+	.form-actions{ justify-content:stretch; flex-direction:column-reverse; }
+	.btn{ width:100%; }
+}
+
+/* utility spacing */
+.mb-0{ margin-bottom:0; }
+.mb-8{ margin-bottom:8px; }
+.mt-8{ margin-top:8px; }
+
+/* small validation icon (if used) */
+.input-with-icon{ position:relative; }
+.input-with-icon .icon{ position:absolute; right:10px; top:50%; transform:translateY(-50%); font-size:1rem; color:var(--muted); }
+
+/* End registration form styles */

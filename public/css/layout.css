@@ -1,0 +1,195 @@
+body {
+    font-family: Poppins;
+    margin: 0;
+    background: #f4f6f9;
+}
+
+.header {
+    background: crimson;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* BASE NAVBAR */
+
+.navbar {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: crimson;
+    padding: 15px 25px;
+
+    color: white;
+}
+
+.logo {
+
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* DESKTOP NAV */
+
+.nav-links {
+
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+
+    color: white;
+    text-decoration: none;
+}
+
+/* BURGER hidden on desktop */
+
+.burger {
+
+    display: none;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+
+/* MOBILE MODE */
+
+@media (max-width: 768px) {
+
+    /* show burger */
+    .burger {
+
+        display: block;
+    }
+
+    /* hide nav initially */
+    .nav-links {
+
+        display: none;
+
+        position: absolute;
+        top: 60px;
+        right: 0;
+
+        background: crimson;
+        flex-direction: column;
+        width: 200px;
+    }
+
+    /* show when active */
+    .nav-links.show {
+
+        display: flex;
+    }
+
+    .nav-links a {
+
+        padding: 15px;
+        border-top: 1px solid rgba(255,255,255,0.2);
+    }
+
+}
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.card h3 {
+    font-size: 32px;
+    color: crimson;
+}
+
+.recent {
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    background: white;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+button {
+    background: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.footer {
+
+    background: #111;
+    color: #ccc;
+    padding: 30px 20px;
+    margin-top: 40px;
+
+}
+
+.footer-container {
+
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.footer h3 {
+
+    color: crimson;
+    margin-bottom: 10px;
+}
+
+.footer-links {
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-links a {
+
+    color: #ccc;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+
+    color: white;
+}
+
+.footer-info {
+
+    font-size: 14px;
+}
+
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 768px) {
+
+    .footer-container {
+
+        flex-direction: column;
+        text-align: center;
+    }
+
+}
