@@ -1,4 +1,4 @@
-import { db } from "./firebase-config.js";
+import { db } from "../firebase-config.js";
 
 import {
   collection,
@@ -6,75 +6,121 @@ import {
   getDocs,
   deleteDoc,
   doc,
-  serverTimestamp
+  serverTimestamp,
+  query,
+  orderBy
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 
+// ==========================
 // DOM ELEMENTS
+// ==========================
+
 const form = document.getElementById("campForm");
 const table = document.getElementById("campTable");
 const message = document.getElementById("message");
+const refreshBtn = document.getElementById("refreshBtn");
 
-const campNameInput = document.getElementById("campName");
-const campLocationInput = document.getElementById("campLocation");
-const campDateInput = document.getElementById("campDate");
-const campTimeInput = document.getElementById("campTime");
-
-const logoutBtn = document.getElementById("logoutBtn");
-
-
-// COLLECTION REF
 const campsCollection = collection(db, "camps");
 
 
-// LOAD CAMPS
-async function loadCamps() {
+// ==========================
+// FORMAT DATE
+// ==========================
 
-  table.innerHTML = "<tr><td colspan='7'>Loading...</td></tr>";
+function formatDate(dateString) {
+
+  const date = new Date(dateString);
+
+  return date.toLocaleDateString("en-IN", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric"
+  });
+
+}
+
+
+// ==========================
+// FORMAT TIME
+// ==========================
+
+function formatTime(timeString) {
+
+  const [hour, minute] = timeString.split(":");
+
+  const date = new Date();
+  date.setHours(hour, minute);
+
+  return date.toLocaleTimeString("en-IN", {
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+
+}
+
+
+// ==========================
+// GET STATUS
+// ==========================
+
+function getStatus(campDate) {
+
+  const today = new Date().setHours(0,0,0,0);
+  const camp = new Date(campDate).setHours(0,0,0,0);
+
+  return camp < today ? "Completed" : "Upcoming";
+
+}
+
+
+// ==========================
+// LOAD CAMPS
+// ==========================
+
+async function loadCamps() {
 
   try {
 
-    const snapshot = await getDocs(campsCollection);
+    const q = query(campsCollection, orderBy("createdAt", "desc"));
+    const snapshot = await getDocs(q);
+
+    table.innerHTML = "";
 
     if (snapshot.empty) {
 
-      table.innerHTML =
-        "<tr><td colspan='7'>No camps found</td></tr>";
-
+      table.innerHTML = `
+        <tr>
+          <td colspan="7">No camps found</td>
+        </tr>
+      `;
       return;
     }
 
-    let html = "";
     let index = 1;
 
-    const today = new Date().toISOString().split("T")[0];
+    snapshot.forEach(docSnap => {
 
-    snapshot.forEach((campDoc) => {
+      const camp = docSnap.data();
+      const id = docSnap.id;
 
-      const camp = campDoc.data();
-      const id = campDoc.id;
-
-      const status =
-        camp.date >= today ? "Upcoming" : "Past";
-
-      html += `
+      table.innerHTML += `
         <tr>
+
           <td>${index++}</td>
+
           <td>${camp.name}</td>
+
           <td>${camp.location}</td>
-          <td>${camp.date}</td>
-          <td>${camp.time}</td>
+
+          <td>${formatDate(camp.date)}</td>
+
+          <td>${formatTime(camp.time)}</td>
+
+          <td>${getStatus(camp.date)}</td>
 
           <td>
-            <span class="status ${status.toLowerCase()}">
-              ${status}
-            </span>
-          </td>
-
-          <td>
-            <button
-              onclick="deleteCamp('${id}')"
-              class="deleteBtn">
+            <button onclick="deleteCamp('${id}')">
               Delete
             </button>
           </td>
@@ -83,54 +129,52 @@ async function loadCamps() {
       `;
     });
 
-    table.innerHTML = html;
-
   }
   catch (error) {
 
-    table.innerHTML =
-      `<tr><td colspan="7">${error.message}</td></tr>`;
+    console.error(error);
+    message.textContent = "Error loading camps";
 
   }
 
 }
 
 
-// INITIAL LOAD
-loadCamps();
+// ==========================
+// ADD CAMP
+// ==========================
 
-
-// CREATE CAMP
 form.addEventListener("submit", async (e) => {
 
   e.preventDefault();
 
-  const name = campNameInput.value.trim();
-  const location = campLocationInput.value.trim();
-  const date = campDateInput.value;
-  const time = campTimeInput.value;
+  const name = document.getElementById("campName").value.trim();
+  const location = document.getElementById("campLocation").value.trim();
+  const date = document.getElementById("campDate").value;
+  const time = document.getElementById("campTime").value;
 
   if (!name || !location || !date || !time) {
 
+    message.textContent = "All fields required";
     message.style.color = "red";
-    message.innerText = "All fields required";
     return;
+
   }
 
   try {
 
-    message.innerText = "Creating...";
-
     await addDoc(campsCollection, {
+
       name,
       location,
       date,
       time,
       createdAt: serverTimestamp()
+
     });
 
+    message.textContent = "Camp created successfully";
     message.style.color = "green";
-    message.innerText = "Camp created successfully";
 
     form.reset();
 
@@ -139,21 +183,23 @@ form.addEventListener("submit", async (e) => {
   }
   catch (error) {
 
+    console.error(error);
+
+    message.textContent = "Failed to create camp";
     message.style.color = "red";
-    message.innerText = error.message;
 
   }
 
 });
 
 
+// ==========================
 // DELETE CAMP
-window.deleteCamp = async (id) => {
+// ==========================
 
-  const confirmDelete =
-    confirm("Delete this camp?");
+window.deleteCamp = async function(id) {
 
-  if (!confirmDelete) return;
+  if (!confirm("Delete this camp?")) return;
 
   try {
 
@@ -164,18 +210,26 @@ window.deleteCamp = async (id) => {
   }
   catch (error) {
 
-    alert(error.message);
+    console.error(error);
 
   }
 
 };
 
 
-// LOGOUT
-logoutBtn.onclick = () => {
+// ==========================
+// REFRESH BUTTON
+// ==========================
 
-  localStorage.clear();
+refreshBtn.addEventListener("click", () => {
 
-  location.href = "../../index.html";
+  loadCamps();
 
-};
+});
+
+
+// ==========================
+// INITIAL LOAD
+// ==========================
+
+loadCamps();

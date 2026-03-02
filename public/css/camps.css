@@ -140,6 +140,7 @@ margin-bottom: 15px;
 form {
 display: flex;
 flex-direction: column; 
+flex-wrap: wrap;
 gap: 12px;
 }
 
@@ -147,19 +148,22 @@ form input {
 padding: 10px;
 border: 1px solid #ccc;
 border-radius: 6px;
+flex: 1;
+min-width: 150px;
 }
 
 form button {
 background: crimson;
 color: white;
 border: none;
-padding: 10px;
+padding: 10px 18px;
 border-radius: 6px;
 cursor: pointer;
+transition: 0.3s;
 }
 
 form button:hover {
-background: crimson;
+background: #800000;
 }
 
 /* BUTTON */
@@ -173,7 +177,7 @@ background: crimson;
 .profile-btn {
     background: crimson;
     color: white;
-    padding: 8px 16px;
+    padding: 10px 18px;
     border: none;
     border-radius: 6px;
     cursor: pointer;
@@ -203,46 +207,73 @@ background: #f1f5f9;
 }
 
 /* STATUS */
-.status-active {
-color: green;
-font-weight: bold;
+.status-upcoming {
+    color: #16a34a;
+    font-weight: bold;
 }
 
-.status-inactive {
-color: red;
-font-weight: bold;
+.status-completed {
+    color: #64748b;
+    font-weight: bold;
 }
 
-/* ACTION BUTTONS */
-.action-btn {
-padding: 6px 10px;
-border: none;
-border-radius: 5px;
-cursor: pointer;
-margin-right: 5px;
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+    cursor: pointer;
 }
 
-.delete-btn {
-background: red;
-color: white;
+table button {
+    padding: 6px 12px;
+    border: none;
+    background-color: #ef4444;
+    color: white;
+    border-radius: 4px;
 }
 
-.toggle-btn {
-background: orange;
-color: white;
-}
-
-.delete-btn:hover {
-background: darkred;
-}
-
-.toggle-btn:hover {
-background: darkorange;
+table button:hover {
+    background-color: #dc2626;
 }
 
 /* MESSAGE */
 #message {
 margin-top: 10px;
 font-weight: bold;
+font-size: 14px;
 color: green;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+    .sidebar {
+        width: 200px;
+    }
+
+    .main-content {
+        margin-left: 200px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .sidebar {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    form {
+        flex-direction: column;
+    }
+
 }
