@@ -5,10 +5,7 @@
     <title>Create Blood Request</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-   
+    <link rel="stylesheet" href="../../css/forms.css">
 </head>
 
 <body>
@@ -16,71 +13,75 @@
 <div class="container">
     <h2>Create Blood Request</h2>
 
-    <form action="submit_request.php" method="POST">
+    <form id="requestForm" novalidate>
 
         <div class="form-group">
-            <label>Patient Name</label>
-            <input type="text" name="patient_name" required>
+            <label for="patientName">Patient Name</label>
+            <input type="text" id="patientName" name="patient_name" required>
         </div>
 
         <div class="form-group">
-            <label>Blood Group Needed</label>
-            <select name="blood_group" required>
+            <label for="requiredBlood">Blood Group Needed</label>
+            <select id="requiredBlood" name="blood_group" required>
                 <option value="">Select Blood Group</option>
-                <option>A+</option>
-                <option>A-</option>
-                <option>B+</option>
-                <option>B-</option>
-                <option>O+</option>
-                <option>O-</option>
-                <option>AB+</option>
-                <option>AB-</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
             </select>
         </div>
 
         <div class="form-group">
-            <label>Units Required</label>
-            <input type="number" name="units" min="1" required>
+            <label for="units">Units Required</label>
+            <input type="number" id="units" name="units" min="1" required>
         </div>
 
         <div class="form-group">
-            <label>Hospital Name</label>
-            <input type="text" name="hospital" required>
+            <label for="hospital">Hospital Name</label>
+            <input type="text" id="hospital" name="hospital" required>
         </div>
 
         <div class="form-group">
-            <label>City</label>
-            <input type="text" name="city" required>
+            <label for="city">City</label>
+            <input type="text" id="city" name="city" required>
         </div>
 
         <div class="form-group">
-            <label>Contact Number</label>
-            <input type="tel" name="contact" pattern="[0-9]{10}" required>
+            <label for="contact">Contact Number</label>
+            <input type="tel" id="contact" name="contact" pattern="[0-9]{10}" required>
         </div>
 
         <div class="form-group">
-            <label>Urgency Level</label>
-            <select name="urgency" required>
+            <label for="urgency">Urgency Level</label>
+            <select id="urgency" name="urgency" required>
                 <option value="">Select Urgency</option>
-                <option>Normal</option>
-                <option>Urgent</option>
-                <option>Emergency</option>
+                <option value="Normal">Normal</option>
+                <option value="Urgent">Urgent</option>
+                <option value="Emergency">Emergency</option>
             </select>
         </div>
 
         <div class="form-group">
-            <label>Additional Notes</label>
-            <textarea name="notes"></textarea>
+            <label for="notes">Additional Notes</label>
+            <textarea id="notes" name="notes"></textarea>
         </div>
 
-        <button type="submit">Submit Request</button>
+        <button type="submit" id="submitRequestBtn">Submit Request</button>
 
     </form>
 
-    <div class="back-link">
+    <p id="message" class="message" aria-live="polite"></p>
+
+    <p class="message" style="margin-top: 8px; font-size: 0.85rem;">
         <a href="dashboard.html">← Back to Dashboard</a>
-    </div>
+    </p>
 </div>
+
+<script type="module" src="../../js/modules/requests.js"></script>
 
 </body>
 </html>

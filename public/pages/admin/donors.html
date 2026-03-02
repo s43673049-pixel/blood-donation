@@ -2,16 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Admin Dashboard | Blood Bank</title>
+    <title>Manage Donors - Blood Donation Camp</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link href="../../css/admin.css" rel="stylesheet">
-
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">  
-
-    <!-- icons -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -35,7 +30,7 @@
 <main class="main-content">
 
     <header class="navbar">
-        <h1>Admin Dashboard</h1>
+        <h1>Manage Donors</h1>
         <div class="navbar-user">
             <div class="avatar" aria-hidden="true">A</div>
             <span class="user-name">Admin</span>
@@ -47,45 +42,33 @@
         </div>
     </header>
 
-    <!-- Top actions -->
-    <section class="top-actions" aria-label="Dashboard actions">
-        <button class="profile-btn" id="refreshBtn" type="button">Refresh data</button>
-    </section>
-
-    <!-- Cards -->
-    <section class="cards" aria-label="Key statistics">
-        <div class="card">
-            <h3>Total Donors</h3>
-            <p id="totalDonors">0</p>
-        </div>
-
-        <div class="card">
-            <h3>Total Donations</h3>
-            <p id="totalDonations">0</p>
-        </div>
-
-        <div class="card">
-            <h3>Facilities</h3>
-            <p id="totalFacilities">0</p>
-        </div>
-
-        <div class="card">
-            <h3>Blood Camps</h3>
-            <p id="activeCamps">0</p>
-        </div>
-
-        <div class="card">
-            <h3>Active Donors</h3>
-            <p id="activeDonors">0</p>
+    <!-- Filters and actions -->
+    <section class="top-actions" aria-label="Donor filters and actions">
+        <div class="filters">
+            <input type="text" id="searchName" placeholder="Search by name">
+            <select id="filterBlood">
+                <option value="">All blood groups</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+            </select>
+            <input type="text" id="filterCity" placeholder="Filter by city">
+            <button class="profile-btn" id="refreshDonorsBtn" type="button">Refresh</button>
         </div>
     </section>
 
-    <!-- Recent Donors Table -->
-    <section class="table-box" aria-label="Recent donors list">
-        <h2>Recent Donors</h2>
-        <table id="donorsTable">
+    <!-- Donors Table -->
+    <section class="table-box" aria-label="All donors list">
+        <h2>All Donors</h2>
+        <table id="allDonorsTable">
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>Name</th>
                     <th>Blood Group</th>
                     <th>Contact</th>
@@ -94,18 +77,14 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Filled by admin.js -->
-                <tr>
-            <td colspan="5">
-              Loading donors...
-            </td>
-          </tr>
+                <!-- Filled by donors.js -->
             </tbody>
         </table>
     </section>
 
 </main>
 
-<script type="module" src="../../js/modules/admin.js"></script>
+<script type="module" src="../../js/modules/donors.js"></script>
 </body>
 </html>
+

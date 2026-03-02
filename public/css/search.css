@@ -1,0 +1,183 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family: "Segoe UI", Arial, sans-serif;
+  background:#f4f6f8;
+   color:#333;
+   line-height:1.5;
+  margin:0;
+}
+
+/* NAVBAR */
+.navbar{
+  background: crimson;
+  padding:15px 30px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+.navbar h2{
+  margin:0;
+  color:white;
+}
+
+/* CONTAINER */
+.container{
+  max-width:1000px;
+  margin:30px auto;
+  background:white;
+  padding:25px;
+  border-radius:8px;
+  box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+/* HEADINGS */
+h2{
+  color:crimson;
+  margin-bottom:18px;
+  font-weight:600;
+}
+
+/* FORM LAYOUT */
+.search-form{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+  align-items:end;
+}
+
+/* FORM GROUP */
+.form-group{
+  display:flex;
+  flex-direction:column;
+}
+
+.form-group label{
+  margin-bottom:6px;
+  font-size:14px;
+  font-weight:500;
+  color:#444;
+}
+
+
+
+/* SEARCH BOX */
+.search-box{
+  display:flex;
+  gap:10px;
+  margin-bottom:20px;
+}
+
+/* INPUT + SELECT */
+input,
+select{
+  padding:10px 12px;
+  border:1px solid #ccc;
+  border-radius:6px;
+  font-size:15px;
+  transition:0.2s;
+} 
+
+input:focus,
+select:focus{
+  outline:none;
+  border-color:crimson;
+  box-shadow:0 0 0 2px rgba(220,20,60,0.1);
+}
+
+select, button{
+  padding:10px 12px;
+  font-size:16px;
+}
+
+button{
+  padding:11px;
+  background:crimson;
+  color:white;
+  border:none;
+  cursor:pointer;
+  border-radius:6px;
+  font-size:16px;
+  font-weight:500;
+  transition:0.25s;
+}
+
+button:hover{
+  background:darkred;
+}
+
+button:active{
+  transform:scale(0.97);
+}
+
+/* MESSAGE */
+.message{
+  margin-top:14px;
+  font-size:14px;
+  color:#666;
+  min-height:18px;
+}
+
+/* TABLE WRAPPER */
+.table-wrapper{
+  overflow-x:auto;
+}
+
+/* TABLE */
+table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:15px;
+}
+
+th, td{
+  padding:12px;
+  border-bottom:1px solid #ddd;
+  text-align:left;
+}
+
+th{
+  background:crimson;
+  color:white;
+}
+
+/* BODY */
+td{
+  padding:11px;
+  border-bottom:1px solid #eee;
+}
+
+/* ROW HOVER */
+tbody tr:hover{
+  background:#fdf2f4;
+}
+
+/* EMPTY STATE */
+tbody tr td[colspan]{
+  text-align:center;
+  color:#777;
+  padding:20px;
+}
+
+.no-data{
+  text-align:center;
+  padding:20px;
+  color:#777;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+  .container{
+    margin:12px;
+    padding:18px;
+  }
+
+  h2{
+    font-size:20px;
+  }
+
+}

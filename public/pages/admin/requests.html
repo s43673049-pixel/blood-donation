@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blood Requests - Blood Donation Camp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../css/admin.css" rel="stylesheet">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- Sidebar -->
+<aside class="sidebar" aria-label="Admin navigation">
+    <div class="logo">Admin Panel</div>
+    <nav>
+        <ul>
+            <li><a href="./admin.html">Dashboard</a></li>
+            <li><a href="../auth/register.html">Add Donor</a></li>
+            <li><a href="./donors.html">Manage Donors</a></li>
+            <li><a href="../donor/search.html">Search Donors</a></li>
+            <li><a href="./requests.html" aria-current="page">View Requests</a></li>
+            <li><a href="#" id="logoutLink">Logout</a></li>
+        </ul>
+    </nav>
+</aside>
+
+<!-- Main Content -->
+<main class="main-content">
+
+    <header class="navbar">
+        <h1>Blood Requests</h1>
+        <div class="navbar-user">
+            <div class="avatar" aria-hidden="true">A</div>
+            <span class="user-name">Admin</span>
+            <button class="icon-btn" id="logoutBtn" title="Logout" aria-label="Logout">⎋</button>
+        </div>
+    </header>
+
+    <!-- Filters and actions -->
+    <section class="top-actions" aria-label="Request filters and actions">
+        <div class="filters">
+            <select id="filterReqBlood">
+                <option value="">All blood groups</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+            </select>
+            <input type="text" id="filterReqCity" placeholder="Filter by city">
+            <select id="filterUrgency">
+                <option value="">All urgency levels</option>
+                <option value="Normal">Normal</option>
+                <option value="Urgent">Urgent</option>
+                <option value="Emergency">Emergency</option>
+            </select>
+            <button class="profile-btn" id="refreshRequestsBtn" type="button">Refresh</button>
+        </div>
+    </section>
+
+    <!-- Requests Table -->
+    <section class="table-box" aria-label="All blood requests list">
+        <h2>All Blood Requests</h2>
+        <table id="requestsTable">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Patient</th>
+                    <th>Blood</th>
+                    <th>Units</th>
+                    <th>Hospital</th>
+                    <th>City</th>
+                    <th>Contact</th>
+                    <th>Urgency</th>
+                    <th>Notes</th>
+                    <th>Created</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Filled by requests-list.js -->
+            </tbody>
+        </table>
+    </section>
+
+</main>
+
+<script type="module" src="../../js/modules/requests-list.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Search Blood Donors</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../css/search.css">
+</head>
+<body>
+
+  <div class="container">
+
+    <h2>Search Blood Donors</h2>
+
+    <form id="searchForm" class="search-form" novalidate>
+      <div class="form-group">
+        <label for="searchBlood">Blood Group</label>
+        <select id="searchBlood" name="bloodGroup">
+          <option value="">Any blood group</option>
+          <option value="A+">A+</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B-">B-</option>
+          <option value="AB+">AB+</option>
+          <option value="AB-">AB-</option>
+          <option value="O+">O+</option>
+          <option value="O-">O-</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="searchCity">City</label>
+        <input type="text" id="searchCity" name="city" placeholder="Enter city (optional)">
+      </div>
+
+      <div class="form-group">
+        <label for="searchName">Name</label>
+        <input type="text" id="searchName" name="name" placeholder="Enter name (optional)">
+      </div>
+
+      <button type="submit" id="searchBtn">Search</button>
+    </form>
+
+    <p id="searchMessage" class="message" aria-live="polite"></p>
+
+  </div>
+
+  <div class="container" style="margin-top: 16px;">
+    <h2 style="margin-bottom: 14px;">Matching Donors</h2>
+    <div class="table-wrapper">
+      <table id="searchResultsTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Blood Group</th>
+            <th>City</th>
+            <th>Contact</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Filled by search-donors.js -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script type="module" src="../../js/modules/search-donors.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Camps Management</title>
+
+<link rel="stylesheet" href="../../css/camps.css">
+
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+
+<h2>Blood Bank Admin</h2>
+
+<ul>
+
+<li><a href="admin.html">Overview</a></li>
+<li><a href="donors.html">Donors</a></li>
+<li><a href="verification.html">Verification</a></li>
+<li><a href="facilities.html">Facilities</a></li>
+<li><a href="camps.html" class="active">Camps</a></li>
+
+</ul>
+
+</aside>
+
+
+<!-- Main Content -->
+<main class="main-content">
+
+    <header class="navbar">
+        <h1>Admin Dashboard</h1>
+        <div class="navbar-user">
+            <div class="avatar" aria-hidden="true">A</div>
+            <span class="user-name">Admin</span>
+        </div>
+    </header>
+
+ <!-- Top actions -->
+    <section class="top-actions" aria-label="Dashboard actions">
+        <button class="profile-btn" id="refreshBtn" type="button">Refresh data</button>
+    </section>    
+
+<!-- ADD CAMP -->
+<section class="cards" aria-label="Key statistics">
+<div class="card">
+<h3>Create New Camp</h3>
+<form id="campForm">
+<input type="text" id="campName" placeholder="Camp Name" required>
+<input type="text" id="campLocation" placeholder="Location" required>
+<input type="date" id="campDate" required>
+<input type="time" id="campTime" required>
+<button type="submit">Create Camp</button>
+</form>
+<p id="message"></p>
+</div>
+</section>
+
+
+<!-- CAMPS TABLE -->
+<div class="card">
+<h3>All Camps</h3>
+<table>
+<thead>
+<tr>
+
+<th>#</th>
+<th>Name</th>
+<th>Location</th>
+<th>Date</th>
+<th>Time</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+</thead>
+<tbody id="campTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<script src="../../js/modules/camps.js"></script>
+
+</body>
+</html>

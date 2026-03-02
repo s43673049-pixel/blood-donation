@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Donors - Blood Donation Camp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../css/admin.css" rel="stylesheet">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- Sidebar -->
+<aside class="sidebar" aria-label="Admin navigation">
+    <div class="logo">Blood Bank Admin</div>
+    <nav>
+        <ul>
+            <li><a href="./admin.html" class="nav-link active">Overview</a></li>
+            <li><a href="../admin/donors.html">Donor</a></li>
+            <li><a href="../admin/verification.html">Verification</a></li>
+
+            <li><a href="../admin/facilities.html">Facilities</a></li>
+            <li><a href="../admin/camps.html">Camps</a></li>
+        </ul>
+    </nav>
+</aside>
+
+<!-- Main Content -->
+<main class="main-content">
+
+    <header class="navbar">
+        <h1>Facilities Management</h1>
+         <!--search   -->
+<input type="text" id="search" placeholder="Search facility...">
+        
+<!-- profile -->
+        <div class="navbar-user">
+            <div class="avatar" aria-hidden="true">A</div>
+            <span class="user-name">Admin</span>
+        </div>
+
+    </header>
+
+
+
+    <!--add form  -->
+    <section class="card" aria-label="Add new facility">
+        <h3>Add Facility</h3>
+
+        <div class="form-box">
+        <input type="text" id="name" placeholder="Facility Name">
+        <input type="text" id="city" placeholder="City">
+        <input type="text" id="contact" placeholder="Contact">
+            <button onclick="addFacility()">Add Facility</button>
+        </div>
+    </section>
+
+    <!-- Facilities Table -->
+    <section class="table-box" aria-label="All facilities list">
+        <h2>All Facilities</h2>
+        <table id="allFacilitiesTable">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Blood Group</th>
+                    <th>Contact</th>
+                    <th>City</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="table">
+              <tr>
+                 <td colspan="5" class="empty">Loading facilities...</td>
+              </tr>
+                <!-- Filled by donors.js -->
+            </tbody>
+        </table>
+    </section>
+
+</main>
+
+<script type="module" src="../../js/modules/.js"></script>
+</body>
+</html>
+

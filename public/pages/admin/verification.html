@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verification Center</title>
+
+<link rel="stylesheet" href="../../css/verification.css">
+
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" aria-label="Admin navigation">
+
+    <div class="logo">Blood Bank Admin</div>
+
+    <nav>
+        <ul>
+
+            <li>
+                <a href="./admin.html">Overview</a>
+            </li>
+
+            <li>
+                <a href="./donors.html">Donors</a>
+            </li>
+
+            <li>
+                <a href="./verification.html" class="active">
+                    Verification
+                </a>
+            </li>
+
+            <li>
+                <a href="./facilities.html">
+                    Facilities
+                </a>
+            </li>
+
+            <li>
+                <a href="./camps.html">
+                    Camps
+                </a>
+            </li>
+
+            <li>
+                <a href="../../index.html">
+                    Back to Home
+                </a>
+            </li>
+
+        </ul>
+    </nav>
+
+</aside>
+
+
+<!-- MAIN CONTENT -->
+<main class="main-content">
+
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+
+        <h1>Verification Center</h1>
+
+        <div class="navbar-user">
+
+            <div class="avatar" aria-hidden="true">
+                A
+            </div>
+
+            <span class="user-name">
+                Admin
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- HEADER CARD -->
+    <section class="header-section">
+
+        <div class="card">
+
+            <h2>Identity Verification</h2>
+
+            <p>
+                Complete verification to unlock donor privileges.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- PROGRESS TRACKER -->
+    <section class="card">
+
+        <div class="progress-container">
+
+            <div class="step active" id="step1">
+                <div class="circle">1</div>
+                <span>Submit</span>
+            </div>
+
+            <div class="line"></div>
+
+            <div class="step" id="step2">
+                <div class="circle">2</div>
+                <span>Review</span>
+            </div>
+
+            <div class="line"></div>
+
+            <div class="step" id="step3">
+                <div class="circle">3</div>
+                <span>Verified</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- STATUS -->
+    <section class="card">
+
+        <div class="status-card">
+
+            Status:
+            <span id="status" class="pending">
+                Pending
+            </span>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- VERIFICATION FORM -->
+    <section class="card">
+
+        <form id="form">
+
+            <label for="userId">
+                User ID
+            </label>
+
+            <input
+                type="text"
+                id="userId"
+                required
+            >
+
+
+            <label>
+                Upload ID Proof
+            </label>
+
+
+            <div
+                class="upload-box"
+                id="uploadBox"
+            >
+
+                <input
+                    type="file"
+                    id="fileInput"
+                    accept="image/*"
+                    hidden
+                >
+
+                <p>
+                    Drag & Drop or Click to Upload
+                </p>
+
+                <img
+                    id="preview"
+                    alt="Preview"
+                    hidden
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                id="submitBtn"
+            >
+                Submit Verification
+            </button>
+
+
+        </form>
+
+
+        <div id="message"></div>
+
+    </section>
+
+
+</main>
+
+
+<script type="module" src="../../js/modules/verification.js"></script>
+
+</body>
+</html>

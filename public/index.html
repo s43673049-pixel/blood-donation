@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BBMS Dashboard</title>
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+
 <link rel="stylesheet" href="css/layout.css">
 
 </head>
@@ -14,64 +16,99 @@
 <header class="header">
     <h2>Blood Bank Management System</h2>
     <!-- Burger icon (mobile only) -->
-    <div class="burger" id="burger">
-        ☰
-    </div>
+    <div class="burger" id="burger"> ☰</div>
 
     <!-- Navigation -->
     <nav class="nav-links" id="navLinks">
-        <a href="admin/admin.html">Admin</a>
-        <a href="overview.html" class="active">
-            Overview
-        </a>
-        <a href="verification.html">
-            Verification
-        </a>
-        <a href="facilities.html">
-            Facilities
-        </a>
-        <a href="donors.html">
-            Donors
-        </a>
+        <a href="index.html" class="active">Home</a>
+        <a href="pages/donor/search.html">Search Donors</a>
+        <a href="pages/donor/create-request.html">Create Request</a>
+        <a href="pages/auth/login.html">Admin Login</a>
+        <button class="btn btn-primary" onclick="location.href='pages/auth/register.html'">Register Donor</button>
     </nav>
 </header>
 
-<section class="stats">
-    <div class="card" id="donorCard">
-        <h3 id="donorCount">0</h3>
-        <p>Total Donors</p>
-    </div>
+<!-- HERO -->
+<section class="hero">
 
-    <div class="card" id="donationCard">
-        <h3 id="donationCount">0</h3>
-        <p>Total Donations</p>
-    </div>
+<div class="hero-text">
+<h1>Donate Blood. Save Lives.</h1>
 
-    <div class="card" id="campCard">
-        <h3 id="campCount">0</h3>
-        <p>Blood Camps</p>
-    </div>
+<p>
+Connect with donors instantly. Help hospitals and patients in critical need.
+</p>
 
-    <div class="card" id="facilityCard">
-        <h3 id="facilityCount">0</h3>
-        <p>Facilities</p>
-    </div>
+<div class="hero-buttons">
+<button class="btn btn-primary" onclick="location.href='pages/auth/register.html'">
+Register Now
+</button>
+
+<button class="btn btn-outline" onclick="location.href='pages/admin/donors.html'">
+Find Donors
+</button>
+</div>
+
+</div>
+
+<img src="https://cdn-icons-png.flaticon.com/512/3774/3774299.png">
+
 </section>
 
-<section class="recent">
+<!-- STATS -->
+<section class="stats">
 
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Blood Group</th>
-                <th>Contact</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody id="donorTable">
-        </tbody>
-    </table>
+<div class="stat">
+<h2 id="donorCount">0</h2>
+<p>Registered Donors</p>
+</div>
+
+<div class="stat">
+<h2>120+</h2>
+<p>Lives Saved</p>
+</div>
+
+<div class="stat">
+<h2>25+</h2>
+<p>Blood Camps</p>
+</div>
+
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+
+<h2>Why BBMS?</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Fast Search</h3>
+<p>Find blood donors instantly.</p>
+</div>
+
+<div class="card">
+<h3>Verified Donors</h3>
+<p>Safe and trusted donor network.</p>
+</div>
+
+<div class="card">
+<h3>Emergency Ready</h3>
+<p>Immediate support during emergencies.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- CTA -->
+<section class="cta">
+
+<h2>Your 1 donation can save 3 lives</h2>
+
+<button class="btn btn-outline" onclick="location.href='pages/auth/register.html'" style="background:white;color:#dc2626">
+Join Now
+</button>
+
 </section>
 
 <!-- footer -->
@@ -108,8 +145,5 @@ burger.addEventListener("click", () => {
 
 });
 </script>
-
-
- <script type="module" src="request.js"></script>
 </body>
 </html>

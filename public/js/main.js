@@ -1,36 +1,81 @@
-// event listeners for form submissions, button clicks, and page interactions
-// global initialization code for setting up the application state and UI components
-// routes and navigation handling for single-page application behavior
+import { db } from "./firebase-config.js";
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, collection, getDocs, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-import { firebaseConfig } from "./firebase-config.js";
+import {
+  collection,
+  getDocs,
+  query,
+  orderBy,
+  limit
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const donorCountEl = document.getElementById("donorCount");
+const donationCountEl = document.getElementById("donationCount");
+const campCountEl = document.getElementById("campCount");
+const facilityCountEl = document.getElementById("facilityCount");
+const donorTable = document.getElementById("donorTable");
+const systemStatusEl = document.getElementById("systemStatus");
 
-async function loadDashboard(){
-    const donors = await getDocs(collection(db, "donors"));
-    const donations = await getDocs(collection(db, "donations"));
-    const camps = await getDocs(collection(db, "camps"));
-    const facilities = await getDocs(collection(db, "facilities"));
+async function loadDashboard() {
+  try {
+    if (donorCountEl) donorCountEl.textContent = "...";
+    if (donationCountEl) donationCountEl.textContent = "...";
+    if (campCountEl) campCountEl.textContent = "...";
+    if (facilityCountEl) facilityCountEl.textContent = "...";
 
-    document.getElementById("donorCount").textContent = donors.size;
-    document.getElementById("donationCount").textContent = donations.size;
-    document.getElementById("campCount").textContent = camps.size;
-    document.getElementById("facilityCount").textContent = facilities.size;
+    if (donorTable) {
+      donorTable.innerHTML =
+        '<tr><td colspan="4" style="text-align:center;">Loading donors...</td></tr>';
+    }
 
-    const q = query(collection(db, "donors"), orderBy("createdAt", "desc"), limit(5));
+    const donorsSnap = await getDocs(collection(db, "donors"));
+    const donationsSnap = await getDocs(collection(db, "donations"));
+    const campsSnap = await getDocs(collection(db, "camps"));
+    const facilitiesSnap = await getDocs(collection(db, "facilities"));
+
+    if (donorCountEl) donorCountEl.textContent = String(donorsSnap.size);
+    if (donationCountEl)
+      donationCountEl.textContent = String(donationsSnap.size || 0);
+    if (campCountEl) campCountEl.textContent = String(campsSnap.size || 0);
+    if (facilityCountEl)
+      facilityCountEl.textContent = String(facilitiesSnap.size || 0);
+
+    const q = query(
+      collection(db, "donors"),
+      orderBy("createdAt", "desc"),
+      limit(5)
+    );
     const snapshot = await getDocs(q);
-    const table = document.getElementById("donorTable");
-    table.innerHTML = "";
 
-    snapshot.forEach(doc => {
-        const donor = doc.data();
-        table.innerHTML += `<tr><td>${donor.name}</td><td>${donor.bloodGroup}</td><td>${donor.contact}</td></tr>`;
-    });
+    if (donorTable) {
+      donorTable.innerHTML = "";
+      snapshot.forEach((docSnap) => {
+        const donor = docSnap.data() || {};
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${donor.name || "-"}</td>
+          <td>${donor.bloodGroup || "-"}</td>
+          <td>${donor.contact || "-"}</td>
+          <td><button>Contact</button></td>
+        `;
+        donorTable.appendChild(tr);
+      });
+
+      if (!snapshot.size) {
+        donorTable.innerHTML =
+          '<tr><td colspan="4" style="text-align:center;">No donors yet.</td></tr>';
+      }
+    }
+
+    if (systemStatusEl) {
+      systemStatusEl.textContent = "System Status: Online";
+    }
+  } catch (error) {
+    console.error("Failed to load landing dashboard:", error);
+    if (systemStatusEl) {
+      systemStatusEl.textContent = "System Status: Offline";
+    }
+  }
 }
 
-document.getElementById("refreshBtn").addEventListener("click", loadDashboard);
 loadDashboard();
 

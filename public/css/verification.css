@@ -1,0 +1,290 @@
+/* ===== RESET ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f9;
+    display: flex;
+}
+
+
+/* ===== SIDEBAR ===== */
+
+.sidebar {
+
+    width: 240px;
+    height: 100vh;
+    background: #111827;
+    color: white;
+    padding: 20px;
+    position: fixed;
+
+}
+
+.logo {
+
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 30px;
+
+}
+
+.sidebar ul {
+
+    list-style: none;
+
+}
+
+.sidebar ul li {
+
+    margin-bottom: 10px;
+
+}
+
+.sidebar ul li a {
+
+    color: #cbd5e1;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 6px;
+    transition: 0.2s;
+
+}
+
+.sidebar ul li a:hover {
+
+    background: crimson;
+    color: white;
+
+}
+
+.sidebar ul li a.active {
+
+    background: crimson;
+    color: white;
+
+}
+
+
+/* ===== MAIN CONTENT ===== */
+
+.main-content {
+
+    margin-left: 240px;
+    padding: 30px;
+    width: 100%;
+
+}
+
+
+/* ===== NAVBAR ===== */
+
+.navbar {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+}
+
+.navbar-user {
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+}
+
+.avatar {
+
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: crimson;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+
+}
+
+
+/* ===== CARD ===== */
+
+.card {
+
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+}
+
+
+/* ===== PROGRESS TRACKER ===== */
+
+.progress-container {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.step {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: gray;
+
+}
+
+.circle {
+
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+
+}
+
+.step.active .circle {
+
+    background: crimson;
+    color: white;
+
+}
+
+.step.active {
+
+    color: crimson;
+
+}
+
+.line {
+
+    flex: 1;
+    height: 3px;
+    background: #e5e7eb;
+    margin: 0 10px;
+
+}
+
+
+/* ===== STATUS ===== */
+
+.status-card {
+
+    font-size: 18px;
+
+}
+
+.pending {
+
+    color: orange;
+    font-weight: bold;
+
+}
+
+.review {
+
+    color: blue;
+    font-weight: bold;
+
+}
+
+.verified {
+
+    color: green;
+    font-weight: bold;
+
+}
+
+
+/* ===== FORM ===== */
+
+form {
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+input {
+
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+
+}
+
+
+/* ===== UPLOAD BOX ===== */
+
+.upload-box {
+
+    border: 2px dashed #ccc;
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+
+}
+
+.upload-box:hover {
+
+    border-color: crimson;
+
+}
+
+.upload-box img {
+
+    max-width: 200px;
+    margin-top: 10px;
+
+}
+
+
+/* ===== BUTTON ===== */
+
+button {
+
+    background: crimson;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+
+}
+
+button:hover {
+
+    background: darkred;
+
+}
+
+
+/* ===== MESSAGE ===== */
+
+#message {
+
+    margin-top: 10px;
+    font-weight: bold;
+
+}

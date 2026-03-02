@@ -46,9 +46,20 @@ body {
     transition: 0.3s;
 }
 
-.sidebar ul li:hover {
+.sidebar ul li a{
+
+color:#cbd5e1;
+text-decoration:none;
+padding:10px;
+display:block;
+border-radius:6px;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
     background: rgba(255,255,255,0.15);
-    border-left: 4px solid #fff;
+    color: #fff;
+    transform: translateX(5px);
 }
 
 .sidebar ul li a {
@@ -78,6 +89,165 @@ body {
 .navbar h1 {
     color: #b30000;
     font-size: 22px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-start;
+
+}
+
+/* navbar user/profile area */
+.navbar-user {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    padding:6px 12px;
+    border-radius:30px;
+    transition: background 0.2s ease;
+  
+
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #b30000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.user-name {
+    font-size: 14px;
+    font-weight: 600;
+    color:#111827;
+}
+
+.icon-btn {
+     background: transparent;
+    border: none;
+    color: #e3e3e3;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 4px 6px;
+    border-radius: 4px;
+    transition: background 0.2s ease, color 0.2s ease; 
+    
+}
+
+.icon-btn:hover {
+    background: rgba(179, 0, 0, 0.08);
+    color: #800000; 
+    transform:scale(1.1);
+}
+
+
+/* facilities */
+/* search input */
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+
+.navbar input{
+    padding:8px 12px;
+    border-radius:6px;
+    border:1px solid #ddd;
+    font-size:14px;
+    width:250px;
+    transition:0.3s;
+
+}
+.navbar input:focus{
+    border-color:#b30000;
+    outline:none;
+}
+
+/* CARD */
+
+.card{
+  background:white;
+  padding:20px;
+  border-radius:10px;
+  margin-bottom:20px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+
+.form-box{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr auto;
+  gap:10px;
+
+}
+
+ input, select{
+  padding:10px;
+  border:1px solid #ccc;
+  border-radius:6px;
+}
+
+button{
+  background:crimson;
+  color:white;
+  border:none;
+  padding:10px 16px;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#b91c1c;
+}
+
+.delete{
+  background:#ef4444;
+}
+
+.delete:hover{
+  background:#dc2626;
+}
+
+/* STATUS */
+
+.status{
+  padding:4px 8px;
+  border-radius:6px;
+  font-size:12px;
+}
+
+.approved{
+  background:#dcfce7;
+  color:#166534;
+}
+
+.pending{
+  background:#fef9c3;
+  color:#854d0e;
+}
+
+/* EMPTY */
+
+.empty{
+  text-align:center;
+  padding:20px;
+  color:#777;
+}
+/* ------------ */
+
+/* refresh/top actions */
+.top-actions {
+    margin-top: 18px;
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .profile-btn {
@@ -88,10 +258,31 @@ body {
     border-radius: 6px;
     cursor: pointer;
     transition: 0.3s;
+    font-size: 14px;
 }
 
 .profile-btn:hover {
     background: #800000;
+}
+
+/* ----------------- */
+
+
+/* donors filters */
+.filters {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.filters input,
+.filters select {
+    min-width: 140px;
+    padding: 7px 10px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    font-size: 13px;
 }
 
 /* ===== Dashboard Cards ===== */
