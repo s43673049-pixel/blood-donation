@@ -24,7 +24,7 @@ async function loadDonorsOnce() {
 
   if (resultsTbody) {
     resultsTbody.innerHTML =
-      '<tr><td colspan="5" style="text-align:center;">Loading donors...</td></tr>';
+      '<tr><td colspan="4" style="text-align:center;">Loading donors...</td></tr>';
   }
 
   const donorsQuery = query(
@@ -48,7 +48,7 @@ function renderResults(list) {
 
   if (!list.length) {
     const tr = document.createElement("tr");
-    tr.innerHTML = `<td colspan="5" style="text-align:center;">No matching donors found.</td>`;
+    tr.innerHTML = `<td colspan="4" style="text-align:center;">No matching donors found.</td>`;
     resultsTbody.appendChild(tr);
     return;
   }
@@ -60,7 +60,6 @@ function renderResults(list) {
       <td>${donor.name || "-"}</td>
       <td>${donor.bloodGroup || "-"}</td>
       <td>${donor.city || "-"}</td>
-      <td>${donor.contact || "-"}</td>
     `;
     resultsTbody.appendChild(tr);
   });

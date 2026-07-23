@@ -1,4 +1,5 @@
 import { db } from "../firebase-config.js";
+import { maskPhone } from "../utils/privacy.js";
 
 import {
   collection,
@@ -57,7 +58,7 @@ function loadFacilities() {
           <td>${index++}</td>
           <td>${facility.name}</td>
           <td>—</td>
-          <td>${facility.contact}</td>
+          <td>${maskPhone(facility.contact)}</td>
           <td>${facility.city}</td>
           <td>
             <button class="delete-btn" data-id="${id}">

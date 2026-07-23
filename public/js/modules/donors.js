@@ -1,4 +1,5 @@
 import { db, auth } from "../firebase-config.js";
+import { maskPhone } from "../utils/privacy.js";
 
 import {
   collection,
@@ -68,7 +69,7 @@ function applyFilters() {
       <td>${index + 1}</td>
       <td>${donor.name || "-"}</td>
       <td>${donor.bloodGroup || "-"}</td>
-      <td>${donor.contact || "-"}</td>
+      <td>${maskPhone(donor.contact)}</td>
       <td>${donor.city || "-"}</td>
       <td>
         <button class="btn btn-delete" data-id="${donor.id}">Delete</button>

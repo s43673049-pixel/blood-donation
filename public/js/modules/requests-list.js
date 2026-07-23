@@ -1,4 +1,5 @@
 import { db, auth } from "../firebase-config.js";
+import { maskPhone } from "../utils/privacy.js";
 
 import {
   collection,
@@ -90,7 +91,7 @@ function applyFilters() {
       <td>${req.units ?? "-"}</td>
       <td>${req.hospital || "-"}</td>
       <td>${req.city || "-"}</td>
-      <td>${req.contact || "-"}</td>
+      <td>${maskPhone(req.contact)}</td>
       <td>${req.urgency || "-"}</td>
       <td>${req.notes || "-"}</td>
       <td>${formatTimestamp(req.createdAt)}</td>

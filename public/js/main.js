@@ -1,4 +1,5 @@
 import { db } from "./firebase-config.js";
+import { maskPhone } from "./utils/privacy.js";
 
 import {
   collection,
@@ -54,7 +55,7 @@ async function loadDashboard() {
         tr.innerHTML = `
           <td>${donor.name || "-"}</td>
           <td>${donor.bloodGroup || "-"}</td>
-          <td>${donor.contact || "-"}</td>
+          <td>${maskPhone(donor.contact)}</td>
           <td><button>Contact</button></td>
         `;
         donorTable.appendChild(tr);

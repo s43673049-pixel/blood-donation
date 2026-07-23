@@ -1,6 +1,7 @@
 // admin-dashboard.js
 
 import { db, auth } from "../firebase-config.js";
+import { maskPhone } from "../utils/privacy.js";
 
 import {
   collection,
@@ -77,7 +78,7 @@ function listenToDonors() {
           <td>${index + 1}</td>
           <td>${data.name || "-"}</td>
           <td>${data.bloodGroup || "-"}</td>
-          <td>${data.contact || "-"}</td>
+          <td>${maskPhone(data.contact)}</td>
           <td>${data.city || "-"}</td>
         `;
 
